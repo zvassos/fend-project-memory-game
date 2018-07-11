@@ -131,7 +131,9 @@ h1 {
     cursor: pointer;
 }
 
-.card.open .fa, .card.matched .fa, .card.not_matched.open .fa{
+.card.open .fa, 
+.card.matched .fa, 
+.card.not_matched.open .fa {
     font-size: 50px;
     color: #fff;
 }
@@ -169,24 +171,6 @@ h1 {
     opacity: 0;
 }
 
-#success-popup {
-    position: fixed;
-    background: #fff;
-    align-items: center;
-    justify-content: center;
-    width: 90vw;
-    height: 90vh;
-    margin: 0 auto;
-    opacity:0;
-    display:none;
-    transition: opacity 1.5s ease;
-}
-
-#success-popup.visible{
-    opacity:1;
-    display: flex;
-}
-
 /* Modal */
 
 .modal {
@@ -221,6 +205,7 @@ h1 {
     top: 50%;
     transform: translateY(-50%);
 }
+
 .modal-content button {
     border: 1px solid #fff;
     padding: 7px 15px;
@@ -259,33 +244,55 @@ h1 {
 /* Animations */
 
 @keyframes hide {
-    from {opacity: 1}
-    to {opacity: 0}
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes bg {
-    from {background: red}
-    to {background: #2e3d49}
+    from {
+        background: red;
+    }
+    to {
+        background: #2e3d49;
+    }
 }
 
 @keyframes success {
-    0%{opacity:0.2; width: 0; height: 0;}
-    100%{ opacity:1; width:150%; height: 150%;}
+    0% {
+        opacity:0.2;
+        width: 0;
+        height: 0;
+    }
+    100% {
+        opacity:1; 
+        width:150%;
+        height: 150%;
+    }
 }
 
 @keyframes shake {
-    0% {transform: scale(1.2)}
-    50% {transform: scale(.8)}
-    100% {transform: scale(1)}
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(.8)
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes no-match {
-    0% {transform: rotate(-10deg) background: red;}
-    20% {transform: rotate(10deg)}
-    40% {transform: rotate(-10deg)}
-    60% {transform: rotate(10deg)}
-    80% {transform: rotate(-10deg)}
-    100% {transform: rotate(0deg) background: #2e3d49}
+    0%, 40%, 80% {
+        transform: rotate(-10deg);
+    }
+    20%, 60%, 100% {
+        transform: rotate(10deg);
+    }
 }
 
 @keyframes Gradient {
