@@ -239,6 +239,3 @@ function Stopwatch(){
     return instance.getHours() / 24;
   }   
 }
-
-/* Stars on final score */
-const finalStar = document.getElementById("one-final");
