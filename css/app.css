@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
     font-family: 'Coda', cursive;
 }
 
@@ -114,19 +114,19 @@ h1 {
     align-items: center;
 }
 
-.score-panel .stars {
+.stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.stars li {
     list-style: none;
     display: inline-block;
 }
 
-.score-panel .restart {
+.score-panel #restart-game {
     float: right;
     cursor: pointer;
 }
@@ -145,7 +145,7 @@ h1 {
 
 .card.matched:after {
     content: "";
-    background: url(../img/success.svg);
+    background: url('../img/success.svg');
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
@@ -206,12 +206,36 @@ h1 {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
+    background-color: #32ddad;
+    color: #fff;
+    margin: 0 auto;
     padding: 20px;
     width: 60%;
     height: 60%;
     box-shadow: 0 0 12px 1px rgba(46, 61, 73, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.modal-content button {
+    border: 1px solid #fff;
+    padding: 7px 15px;
+    background: transparent;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    font-size: 2em;
+}
+
+.modal-content p {
+    margin-bottom: 40px;
 }
 
 /* The Close Button */
@@ -220,6 +244,9 @@ h1 {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 0;
 }
 
 .close:hover,

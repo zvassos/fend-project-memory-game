@@ -1,23 +1,15 @@
-/*
- * Create a list that holds all of your cards
- */
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 const cardDeck = document.getElementById("card-list");
 const deckFrag = document.createDocumentFragment();
 const listItems = document.getElementsByClassName("card");
- const modal = document.getElementById("myModal");
+const modal = document.getElementById("myModal");
 
-const arrowTwo = document.getElementById("two");
-const arrowThree = document.getElementById("three");
-const arrowOne = document.getElementById("one");
+const starOne = document.getElementsByClassName("one");
+const starTwo = document.getElementsByClassName("two");
+const starThree = document.getElementsByClassName("three");
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -32,6 +24,7 @@ function shuffle(array) {
 
     return array;
 }
+
 /* The array declaration */
 const arr = ["<i class='fa fa-diamond'></i>",
              "<i class='fa fa-diamond'></i>",
@@ -97,10 +90,12 @@ for (let i = 0; i < listItems.length; i++) {
             if (hasClassOpen.length > 1) {
                 if (hasClassOpen[0].innerHTML == hasClassOpen[1].innerHTML) {
                     for (let i = 0; i < hasClassOpen.length; i++) {
+                        
                         if (hasClassOpen[i].innerHTML == hasClassOpen[i].innerHTML) {
                             hasClassOpen[i].classList.add("matched");
                             
                         }
+                        
                     }
 
                     const hasClassMatched = document.getElementsByClassName("matched");
@@ -126,7 +121,7 @@ for (let i = 0; i < listItems.length; i++) {
                     }
                 }
                 clickCount++;
-                const totalMoves = document.getElementById("moves-total");
+                const totalMoves = document.getElementById("totalMoves");
                 totalMoves.innerHTML = clickCount;
                 
                 
@@ -134,27 +129,34 @@ for (let i = 0; i < listItems.length; i++) {
             
         }
         
-                if (clickCount <= 8) {
-                    
+        if (clickCount <= 20) {
+                
+            //do nothing
                    
-                } else if (clickCount <= 16) {
-                    arrowThree.style.color = "#b2b0b0";
-                } else if (clickCount <= 25){
-                    arrowTwo.style.color = "#b2b0b0";
-                    arrowThree.style.color = "#b2b0b0";
-                } else {
-                    arrowThree.style.color = "#b2b0b0";
-                    arrowTwo.style.color = "#b2b0b0";
-                    arrowOne.style.color = "#b2b0b0";
-                    
-                }
+        } else if (clickCount <= 30) {
+            
+            starThree[0].style.color = "#b2b0b0";
+            
+        } else if (clickCount <= 40){
+            
+            starTwo[0].style.color = "#b2b0b0";
+            
+        } else {
+            
+            starOne[0].style.color = "#b2b0b0";
+            
+        }
         
-        const movesCounter = document.getElementById("moves");
+        const movesCounter = document.getElementsByClassName("moves");
         
         if (clickCount==1) {
-            movesCounter.innerHTML = clickCount + " Move";
+            
+            movesCounter[0].innerHTML = clickCount + " Move";
+            
         } else {
-            movesCounter.innerHTML  = clickCount + " Moves";
+            
+            movesCounter[0].innerHTML  = clickCount + " Moves";
+            
         }
         
         const matchedCards = document.getElementsByClassName("matched");
@@ -163,7 +165,14 @@ for (let i = 0; i < listItems.length; i++) {
              setTimeout(function() {
                 modal.style.display = "block";                 
                 modal.style.opacity = "1";
-             }, (1000));
+                
+             }, (500));
+            
+            st.stop(); /* Stops timer */
+            const stopWatch = document.getElementById("stopWatch");
+
+            stopWatch.innerHTML = st.getSeconds(); /* prints seconds passed timer */
+            console.log(st.getSeconds());
             
         }
         
@@ -178,13 +187,58 @@ for (let i = 0; i < listItems.length; i++) {
     }, false);
 }
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+
+
+const restartButton = document.getElementById("restart-game");
+restartButton.addEventListener("click", function(){
+    location.reload();
+})
+
+const playAgainButton = document.getElementById("play-again");
+playAgainButton.addEventListener("click", function(){
+    location.reload();
+})
+
+/* Stopwatch from https://stackoverflow.com/questions/1210701/compute-elapsed-time */
+
+const st = new Stopwatch();
+st.start(); //Start the stopwatch
+
+
+
+function Stopwatch(){
+  var startTime, endTime, instance = this;
+
+  this.start = function (){
+    startTime = new Date();
+  };
+
+  this.stop = function (){
+    endTime = new Date();
+  }
+
+  this.clear = function (){
+    startTime = null;
+    endTime = null;
+  }
+
+  this.getSeconds = function(){
+    if (!endTime){
+    return 0;
+    }
+    return Math.round((endTime.getTime() - startTime.getTime()) / 1000);
+  }
+
+  this.getMinutes = function(){
+    return instance.getSeconds() / 60;
+  }      
+  this.getHours = function(){
+    return instance.getSeconds() / 60 / 60;
+  }    
+  this.getDays = function(){
+    return instance.getHours() / 24;
+  }   
+}
+
+/* Stars on final score */
+const finalStar = document.getElementById("one-final");
