@@ -1,20 +1,35 @@
 # Memory Game Project
 
+This is my version of the classic Memory Matching Game for the Google's & Udacity's Front-End Web Developer Nanodegree
+
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Resources](#Resources)
 * [Contributing](#contributing)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The purpose of the game is to find all the matching boxes, you can achieve this by using your memory and abit of luck.
 
-To get started, open `js/app.js` and start building out the app's functionality
+* Click a box to reveal its content.
+* Then Click another box to see if its content matches the previous one.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+The rating system depends on your tries, the more tries you do, the less stars you are going to recieve. 
+Three stars is the highest and one star is the lowest you can get.
+
+* Less than 21 tries = 3 Star
+* More than 20 but less than 30 tries = 2 Star
+* More than 30 tries = 1 Star
+
+## Resources
+
+* StopWatch from https://jsfiddle.net/Daniel_Hug/pvk6p/
+* Shuffle function from http://stackoverflow.com/a/2450976
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is my version of the classic Memory Matching Game for the Google's & Udacity's Front-End Web Developer Nanodegree. 
+Therefore, most likely i will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
