@@ -1,3 +1,4 @@
+/** Global Variables */
 const cardDeck = document.getElementById("card-list");
 const deckFrag = document.createDocumentFragment();
 const listItems = document.getElementsByClassName("card");
@@ -7,7 +8,7 @@ const starOne = document.getElementsByClassName("one");
 const starTwo = document.getElementsByClassName("two");
 const starThree = document.getElementsByClassName("three");
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+/** Shuffle function from http://stackoverflow.com/a/2450976 */
 
 function shuffle(array) {
   let currentIndex = array.length,
@@ -25,7 +26,7 @@ function shuffle(array) {
   return array;
 }
 
-/* The array declaration */
+/** The array declaration */
 const arr = [
   "<i class='fa fa-diamond'></i>",
   "<i class='fa fa-diamond'></i>",
@@ -45,7 +46,7 @@ const arr = [
   "<i class='fa fa-bolt'></i>"
 ];
 
-/* Put each array item in an li */
+/** Put each array item in an li */
 
 function shareArrayItems() {
   for (let i = 0; i < listItems.length; i++) {
@@ -53,7 +54,7 @@ function shareArrayItems() {
   }
 }
 
-/* Make the list */
+/** Make the list */
 
 function makeList() {
   for (let i = 1; i <= 16; i++) {
@@ -69,15 +70,18 @@ function makeList() {
 
 makeList();
 let clickCount = 0;
-/* Add class visible on click */
+
+/** Add class's for the clicked Box */
+
 for (let i = 0; i < listItems.length; i++) {
   listItems[i].addEventListener(
     "click",
+      
+    /** Add class "clicked" */  
     function() {
       listItems[i].classList.add("clicked");
 
-      const hasClassClicked = document.getElementsByClassName("clicked");
-
+      const hasClassClicked = document.getElementsByClassName("clicked");   
       if (hasClassClicked.length > 0 && hasClassClicked.length < 3) {
         for (let i = 0; i < hasClassClicked.length; i++) {
           hasClassClicked[i].classList.add("open");
@@ -112,7 +116,7 @@ for (let i = 0; i < listItems.length; i++) {
           totalMoves.innerHTML = clickCount;
         }
       }
-
+        /** Star rating System */
       if (clickCount <= 20) {
         //do nothing
       } else if (clickCount <= 30) {
@@ -135,9 +139,11 @@ for (let i = 0; i < listItems.length; i++) {
           modal.style.display = "block";
           modal.style.opacity = "1";
         }, 500);
-
+          
+        // Stops the timer  
         clearTimeout(t);
         const stopWatch = document.getElementById("stopWatch");
+        // Shows the timer at the modal
         stopWatch.textContent =
           (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") +
           ":" +
@@ -163,7 +169,7 @@ playAgainButton.addEventListener("click", function() {
   location.reload();
 });
 
-/* New Stopwatch */
+/** The timer */
 
 const h1 = document.getElementsByTagName("h1")[0],
   start = document.getElementById("start"),
