@@ -117,12 +117,14 @@ for (let i = 0; i < listItems.length; i++) {
         }
       }
         /** Star rating System */
-      if (clickCount <= 20) {
+      if (clickCount <= 2) {
         //do nothing
-      } else if (clickCount <= 30) {
+      } else if (clickCount <= 5) {
         starThree[0].style.color = "#b2b0b0";
+        starThree[1].style.color = "#b2b0b0";
       } else if (clickCount <= 40) {
         starTwo[0].style.color = "#b2b0b0";
+        starTwo[1].style.color = "#b2b0b0";
       }
 
       const movesCounter = document.getElementsByClassName("moves");
@@ -134,7 +136,7 @@ for (let i = 0; i < listItems.length; i++) {
       }
 
       const matchedCards = document.getElementsByClassName("matched");
-      if (matchedCards.length == 16) {
+      if (matchedCards.length == 4) {
         setTimeout(function() {
           modal.style.display = "block";
           modal.style.opacity = "1";
