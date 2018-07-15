@@ -117,9 +117,9 @@ for (let i = 0; i < listItems.length; i++) {
         }
       }
         /** Star rating System */
-      if (clickCount <= 2) {
+      if (clickCount <= 20) {
         //do nothing
-      } else if (clickCount <= 5) {
+      } else if (clickCount <= 30) {
         starThree[0].style.color = "#b2b0b0";
         starThree[1].style.color = "#b2b0b0";
       } else if (clickCount <= 40) {
@@ -136,7 +136,7 @@ for (let i = 0; i < listItems.length; i++) {
       }
 
       const matchedCards = document.getElementsByClassName("matched");
-      if (matchedCards.length == 4) {
+      if (matchedCards.length == 16) {
         setTimeout(function() {
           modal.style.display = "block";
           modal.style.opacity = "1";
